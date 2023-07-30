@@ -1,12 +1,13 @@
 import React from "react";
-import Header from "./components/Header";
-import Day from "./components/AddDay";
+import Header from "./components/Header/Header";
+import AddDay from "./components/Days/AddDay";
+import AddTarget from "./components/Targets/AddTarget";
 
 function App() {
   return (
     <div>
       <Header></Header>
-      <Day></Day>
+      <AddTarget />
     </div>
   );
 }
