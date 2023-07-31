@@ -15,7 +15,6 @@ const AddTarget = () => {
 
   const addTargetHandler = (event) => {
     event.preventDefault();
-    console.log("new target");
     setTarget(+enteredTarget);
   };
 
