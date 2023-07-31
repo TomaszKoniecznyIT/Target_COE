@@ -22,7 +22,7 @@ const AddTarget = () => {
     <div>
       <Card className={classes.input}>
         <form onSubmit={addTargetHandler}>
-          <label htmlFor="target">Weekly target</label>
+          <h2>Weekly target</h2>
           <input
             id="target"
             type="number"
