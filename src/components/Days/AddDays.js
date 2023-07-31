@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import Day from "./Day";
@@ -15,14 +16,14 @@ const daysResults = {
 };
 
 const AddDays = () => {
+  const [suma, setSuma] = useState(0);
   const saveDaysHandler = (enteredDays, enteredValue) => {
     daysResults[enteredDays] = +enteredValue;
   };
 
   const addDaysHandler = (event) => {
     event.preventDefault();
-    const Suma = Object.values(daysResults).reduce((a, b) => a + b);
-    console.log(Suma);
+    setSuma(Object.values(daysResults).reduce((a, b) => a + b));
   };
 
   return (
@@ -40,6 +41,7 @@ const AddDays = () => {
         </Card>
         <Button type="submit">Calculate</Button>
       </form>
+      <p>{suma}</p>
     </Card>
   );
 };
