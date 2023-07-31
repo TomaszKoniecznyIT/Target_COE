@@ -1,21 +1,40 @@
+import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 
 import classes from "./AddTarget.module.css";
+import TargetsLevel from "./TargetsLevel";
 
 const AddTarget = () => {
-  const addTargetHandler = () => {
+  const [enteredTarget, setEnteredTarget] = useState("");
+  const [target, setTarget] = useState();
+
+  const targetChangeHandler = (event) => {
+    setEnteredTarget(event.target.value);
+  };
+
+  const addTargetHandler = (event) => {
+    event.preventDefault();
     console.log("new target");
+    setTarget(+enteredTarget);
   };
 
   return (
-    <Card className={classes.input}>
-      <form>
-        <label htmlFor="target">Weekly target</label>
-        <input id="target" type="number"></input>
-        <Button onClick={addTargetHandler}>Add New Target</Button>
-      </form>
-    </Card>
+    <div>
+      <Card className={classes.input}>
+        <form onSubmit={addTargetHandler}>
+          <label htmlFor="target">Weekly target</label>
+          <input
+            id="target"
+            type="number"
+            value={enteredTarget}
+            onChange={targetChangeHandler}
+          ></input>
+          <Button type="submit">Add New Target</Button>
+        </form>
+      </Card>
+      {target && <TargetsLevel target={target} />}
+    </div>
   );
 };
 
