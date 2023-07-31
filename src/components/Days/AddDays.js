@@ -4,14 +4,38 @@ import Day from "./Day";
 
 import classes from "./AddDays.module.css";
 
-const AddDays = (props) => {
+const daysResults = {
+  Monday: 0,
+  Tuesday: 0,
+  Wednesday: 0,
+  Thursday: 0,
+  Friday: 0,
+  Saturday: 0,
+  Sunday: 0,
+};
+
+const AddDays = () => {
+  const saveDaysHandler = (enteredDays, enteredValue) => {
+    daysResults[enteredDays] = +enteredValue;
+  };
+
+  const addDaysHandler = (event) => {
+    event.preventDefault();
+    const Suma = Object.values(daysResults).reduce((a, b) => a + b);
+    console.log(Suma);
+  };
+
   return (
     <Card className={classes.days}>
       <h2>Results of individual days</h2>
-      <form>
+      <form onSubmit={addDaysHandler}>
         <Card>
-          {props.daysResults.map((dayTotal) => (
-            <Day key={dayTotal.dayWeek} dayTotal={dayTotal}></Day>
+          {Object.keys(daysResults).map((dayTotal) => (
+            <Day
+              key={dayTotal}
+              dayTotal={dayTotal}
+              onSaveDays={saveDaysHandler}
+            ></Day>
           ))}
         </Card>
         <Button type="submit">Calculate</Button>
