@@ -15,7 +15,7 @@ const daysResults = {
   Sunday: 0,
 };
 
-const AddDays = () => {
+const AddDays = (props) => {
   const [suma, setSuma] = useState(0);
   const saveDaysHandler = (enteredDays, enteredValue) => {
     daysResults[enteredDays] = +enteredValue;
@@ -41,7 +41,7 @@ const AddDays = () => {
         </Card>
         <Button type="submit">Calculate</Button>
       </form>
-      <p>{suma}</p>
+      <p>{props.target100 - suma}</p>
     </Card>
   );
 };

@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 import classes from "./AddTarget.module.css";
 import TargetsLevel from "./TargetsLevel";
 
-const AddTarget = () => {
+const AddTarget = (props) => {
   const [enteredTarget, setEnteredTarget] = useState("");
   const [target, setTarget] = useState();
 
@@ -15,7 +15,8 @@ const AddTarget = () => {
 
   const addTargetHandler = (event) => {
     event.preventDefault();
-    setTarget(+enteredTarget);
+    setTarget(enteredTarget);
+    props.onTarget(enteredTarget);
   };
 
   return (
