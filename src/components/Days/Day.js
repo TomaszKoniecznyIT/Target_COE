@@ -1,13 +1,18 @@
+import React, { useState } from "react";
 import Card from "../UI/Card";
 
 import classes from "./Day.module.css";
 
 const Day = (props) => {
-  console.log(props);
+  const [day, setDay] = useState("");
+  const dayChangeHandler = (event) => {
+    setDay(event.target.value);
+  };
+
   return (
     <Card className={classes.input}>
-      <label>{props.dayTotal[0]}</label>
-      <input type="number" value={props.dayTotal[1]}></input>
+      <label>{props.dayTotal.dayWeek}</label>
+      <input type="number" value={day} onChange={dayChangeHandler}></input>
     </Card>
   );
 };

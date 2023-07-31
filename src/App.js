@@ -5,13 +5,13 @@ import AddDays from "./components/Days/AddDays";
 
 function App() {
   const daysResults = [
-    ["Monday", 0],
-    ["Tuesday", 0],
-    ["Wednesday", 0],
-    ["Thursday", 0],
-    ["Friday", 0],
-    ["Saturday", 0],
-    ["Sunday", 0],
+    { dayWeek: "Monday", value: 0 },
+    { dayWeek: "Tuesday", value: 0 },
+    { dayWeek: "Wednesday", value: 0 },
+    { dayWeek: "Thursday", value: 0 },
+    { dayWeek: "Friday", value: 0 },
+    { dayWeek: "Saturday", value: 0 },
+    { dayWeek: "Sunday", value: 0 },
   ];
 
   return (

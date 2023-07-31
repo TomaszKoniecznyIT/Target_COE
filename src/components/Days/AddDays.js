@@ -11,7 +11,7 @@ const AddDays = (props) => {
       <form>
         <Card>
           {props.daysResults.map((dayTotal) => (
-            <Day dayTotal={dayTotal}></Day>
+            <Day key={dayTotal.dayWeek} dayTotal={dayTotal}></Day>
           ))}
         </Card>
         <Button type="submit">Calculate</Button>
