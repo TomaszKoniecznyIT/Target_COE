@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import Day from "./Day";
 
 import classes from "./AddDays.module.css";
+import DaySakeToTarget from "./DaySaleToTarget";
 
 const daysResults = {
   Monday: 0,
@@ -17,6 +18,8 @@ const daysResults = {
 
 const AddDays = (props) => {
   const [suma, setSuma] = useState(0);
+  const [howManyDays0, setHowManyDays0] = useState(7);
+
   const saveDaysHandler = (enteredDays, enteredValue) => {
     daysResults[enteredDays] = +enteredValue;
   };
@@ -24,6 +27,9 @@ const AddDays = (props) => {
   const addDaysHandler = (event) => {
     event.preventDefault();
     setSuma(Object.values(daysResults).reduce((a, b) => a + b));
+    setHowManyDays0(
+      Object.values(daysResults).filter((item) => item === 0).length
+    );
   };
 
   return (
@@ -41,7 +47,11 @@ const AddDays = (props) => {
         </Card>
         <Button type="submit">Calculate</Button>
       </form>
-      <p>{props.target100 - suma}</p>
+      <DaySakeToTarget
+        suma={suma}
+        howManyDays0={howManyDays0}
+        target100={props.target100}
+      />
     </Card>
   );
 };
