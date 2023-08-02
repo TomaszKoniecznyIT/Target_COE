@@ -19,6 +19,7 @@ const daysResults = {
 const AddDays = (props) => {
   const [suma, setSuma] = useState(0);
   const [howManyDays0, setHowManyDays0] = useState(7);
+  const [display, setDisplay] = useState();
 
   const saveDaysHandler = (enteredDays, enteredValue) => {
     daysResults[enteredDays] = +enteredValue;
@@ -30,29 +31,36 @@ const AddDays = (props) => {
     setHowManyDays0(
       Object.values(daysResults).filter((item) => item === 0).length
     );
+    setDisplay(true);
   };
 
   return (
-    <Card className={classes.days}>
-      <h2>Results of individual days</h2>
-      <form onSubmit={addDaysHandler}>
-        <Card>
-          {Object.keys(daysResults).map((dayTotal) => (
-            <Day
-              key={dayTotal}
-              dayTotal={dayTotal}
-              onSaveDays={saveDaysHandler}
-            ></Day>
-          ))}
-        </Card>
-        <Button type="submit">Calculate</Button>
-      </form>
-      <DaySakeToTarget
-        suma={suma}
-        howManyDays0={howManyDays0}
-        target100={props.target100}
-      />
-    </Card>
+    <div>
+      <Card className={classes.days}>
+        <h2>Results of individual days</h2>
+        <form onSubmit={addDaysHandler}>
+          <Card>
+            {Object.keys(daysResults).map((dayTotal) => (
+              <Day
+                key={dayTotal}
+                dayTotal={dayTotal}
+                onSaveDays={saveDaysHandler}
+              ></Day>
+            ))}
+          </Card>
+          <Button type="submit">Calculate</Button>
+        </form>
+      </Card>
+      <Card>
+        {display && (
+          <DaySakeToTarget
+            suma={suma}
+            howManyDays0={howManyDays0}
+            target100={props.target100}
+          />
+        )}
+      </Card>
+    </div>
   );
 };
 
