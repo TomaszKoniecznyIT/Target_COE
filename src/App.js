@@ -14,7 +14,7 @@ function App() {
     <div>
       <Header></Header>
       <AddTarget onTarget={onTargetHandler} />
-      <AddDays target100={target} />
+      {target && <AddDays target100={target} />}
     </div>
   );
 }
