@@ -10,7 +10,9 @@ const formatter = new Intl.NumberFormat("en-UK", {
 const DaySakeToTarget = (props) => {
   return (
     <Card>
-      <h2>We still have to do: {props.target100 - props.suma}</h2>
+      <h2>
+        We still have to do: {formatter.format(props.target100 - props.suma)}
+      </h2>
       <h2>
         Daily target 100%:{" "}
         {formatter.format((props.target100 - props.suma) / props.howManyDays0)}
