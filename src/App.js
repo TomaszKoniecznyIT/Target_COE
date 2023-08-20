@@ -4,7 +4,7 @@ import AddTarget from "./components/Targets/AddTarget";
 import AddDays from "./components/Days/AddDays";
 
 function App() {
-  const [target, setTarget] = useState(0);
+  const [target, setTarget] = useState();
 
   const onTargetHandler = (dataTarget) => {
     setTarget(dataTarget);
